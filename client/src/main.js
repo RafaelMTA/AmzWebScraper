@@ -33,8 +33,8 @@ async function scrapeData(query){
         });
 
         if (!response.ok) {
+            //Inform the user if the request failed(Ie. Amazon blocking the request)
             showStatus('Error on Search, please try again...', 'error');
-            console.log(`Error: ${response.status}`);
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         //Fetched Products

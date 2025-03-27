@@ -12,5 +12,6 @@ To run:
 bun vite
 ```
 
-Please setup the corresponding url that the api server is running in the 'vite.config.js' file
+### Additional Information
+Please make sure the corresponding url that the api server is correct in the 'vite.config.js' file
 -Under: 'server' -> 'proxy' -> '/api' -> 'target'
