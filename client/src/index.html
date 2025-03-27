@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Web Scraper</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"  />
+  </head>
+  <body>
+    <div class="container">
+      <div class="title fade-in-top"><h1 class="title-wrapper">Amazon Web Scraper</h1></div>
+      <br/>
+      <div class="search-container fade-in-bottom">
+        <input type="text" id="searchInput" class="input-text" placeholder="Enter search keyword..." />
+        <button id="searchButton" class="input-button"><span class="button-text">Search</span></button>          
+      </div>
+      <br/>
+      <div id="product-status"></div>  
+      <br/>
+      <div id="product-container"></div>
+    </div>
+    <script src="./main.js" type="module"></script>
+  </body>
+</html>

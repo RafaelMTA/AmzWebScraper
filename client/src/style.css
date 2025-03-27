@@ -1,0 +1,323 @@
+:root{
+    --primary-color: #3498db;
+    --secondary-color: #2980b9;
+    --background-color: #f5f7fa;
+    --text-color: #333;
+    --light-gray: #ecf0f1;
+    --dark-gray: #7f8c8d;
+}
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+
+    scrollbar-width: none;
+}
+
+/* === Start[Main Container] === */
+/* Sets the positions of the Title, Inputs, and product card container */
+.container{
+    display: flex;
+    flex-direction: column;
+
+    width: 100vw;
+    height: 100vh;
+
+    align-items: center;
+}
+/* === END[Main Container] === */
+
+/* === Start[Title] === */
+h1{
+    position: relative;
+    padding: 0;
+    margin: 0;
+    font-family: "Raleway", sans-serif;
+    font-weight: 300;
+    font-size: 40px;
+    color: #080808;
+    -webkit-transition: all 0.4s ease 0s;
+    -o-transition: all 0.4s ease 0s;
+    transition: all 0.4s ease 0s;
+}
+
+.title h1{
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.title h1:before {
+    width: 28px;
+    height: 5px;
+    display: block;
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 50%;
+    margin-left: -14px;
+    background-color: #b80000;
+  }
+
+.title h1:after {
+    width: 100px;
+    height: 1px;
+    display: block;
+    content: "";
+    position: relative;
+    margin-top: 25px;
+    left: 50%;
+    margin-left: -50px;
+    background-color: #b80000;
+  }
+/* === END[Title] === */
+
+/* === Start[Search Container] === */
+.search-container{
+    display: flex;
+    flex-flow: row nowrap;
+
+    justify-content: center;
+    width: 100%;
+}
+/* === END[Search Container] === */
+
+/* === Start[Search Input Text] === */
+.input-text{
+    width: 100%;
+    height: 2rem;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid;
+    outline: none;    
+    text-indent: 5px;
+    border: solid 1.5px #D3D3D3;
+    -webkit-transition: 1s; /* Safari */
+    transition: 1s;
+}
+
+input[type=text]:hover{
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+}
+
+input[type=text]:focus {
+    box-shadow: 0 0 5pt 2pt #D3D3D3;
+    outline-width: 0px;
+}
+/* === End[Search Input Text] === */
+
+/* === Start[Search Button] === */
+.input-button{
+    border: none;
+    border-radius: 0 5px 5px 0;
+    width: 5rem;
+    height: 2rem;
+    font-size: 15px;
+    background: rgb(40,212,102);
+    background: linear-gradient(0deg, rgba(40,212,102,1) 0%, rgba(66,217,35,1) 100%);
+    box-shadow: 0 0 5pt 0.5pt #D3D3D3;
+}
+
+.input-button:hover{
+    cursor: pointer;
+    background: rgb(45,230,112);
+    background: linear-gradient(0deg, rgba(45,230,112,1) 0%, rgba(69,227,36,1) 100%);
+}
+
+.input-button .button-text{
+    color: white;
+    font-weight: bold;
+}
+/* === END[Search Button] === */
+
+/* === Start[Product Cards Container] === */
+/* The container in which the product cards will be populated */
+#product-container{
+    display: flex;
+    flex-flow: row wrap;
+    flex-basis: auto;
+    justify-content: center;
+    gap: 15px;
+    width: inherit;
+    height: inherit;
+}
+/* === END[Product Cards Container] === */
+
+/* === Start[Product Card] === */
+.card{
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    
+    width: 18rem;
+    height: 28rem;  
+    border-radius: 10px;
+    box-shadow: -5px 5px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.card-head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: start;
+    height: 90%;
+    background: #fa782e; 
+    border-radius: 10px 10px 0 0;
+    text-align: center;
+}
+
+.card-body{
+    display: flex;
+    flex-basis: auto;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+    margin: 5px;
+}
+
+img{
+    max-width: 250px;
+    max-height: 250px;
+    z-index: 10;
+    border-radius: 10%;
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.product-detail {
+    color: #fff;
+    height: 5rem;
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+
+.product-detail h2 {
+    font-size: .8rem;
+    font-weight: bold;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    margin: 5px;
+}
+
+.product-desc {
+    display: flex;
+    flex-direction: row;
+}
+
+.product-rating {
+    align-content: center;
+}
+
+.product-rating-text{
+    font-size: 12px;
+}
+
+.product-review {
+    background: #11e95b;
+    padding: 7px 20px;
+    text-align: center;
+    display: inline-block;
+    font-size: 17px;
+    font-weight: 200;
+    color: #fff;
+    border-radius: 7px;
+    box-shadow: 1px 1px 5px 5px rgba(0, 0, 0, 0.3);
+}
+
+.product-review:hover{
+    cursor: pointer;
+    background: #11e95b;   
+    box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.5);
+}
+/* Stars icon color */
+.yellow{
+    color: yellow;
+}
+/* === End[Product Card] === */
+
+/* === Start[Show Status] === */
+.error{
+    color: red;
+}
+
+.success{
+    color: green;
+}
+
+.warning{
+    color: orange;
+}
+/* === END[Show Status] === */
+
+/* Fade in & out animation */
+
+/* === Start[Fade In] === */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .fade-in {
+    animation: fadeIn .5s ease-in;
+  }
+/* === END[Fade In] === */
+
+/* === Start[Fade Out] === */
+  @keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; visibility: hidden;}
+  }
+  
+  .fade-out {
+    animation: fadeOut .5s ease-out forwards;
+  }
+/* === END[Fade Out] === */
+
+/* === Start[Fade in from top] === */
+@keyframes fadeInTop {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in-top {
+    animation: fadeInTop 1s ease forwards;
+  }
+/* === END[Fade in from top] === */
+
+/* === Start[Fade in from bottom] === */
+@keyframes fadeInBottom {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .fade-in-bottom {
+    animation: fadeInBottom 0.5s ease forwards;
+  }
+/* === END[Fade in from bottom] === */
+
+  /* Responsive */
+
+  /* For larger screens */
+@media (min-width: 768px) {
+    input[type=text] {
+      width: 45%;
+    }
+}
+  
+/* For very large screens */
+@media (min-width: 1200px) {
+    input[type=text] {
+        width: 35%;
+    }
+}
