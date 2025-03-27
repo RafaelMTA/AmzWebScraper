@@ -7,13 +7,10 @@ bun install
 ```
 To run:
 
-In development
 ```bash
 bun run dev 
 ```
 or
-
-In Production
 ```bash
 bun run start
 ```
