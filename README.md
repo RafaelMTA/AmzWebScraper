@@ -38,6 +38,7 @@ This Amazon Web Scraper is a full-stack application designed to scrape product i
 ### Clone the Repository
 ```bash
 git clone [https://github.com/RafaelMTA/AmzWebScraper.git]
+cd AmzWebScraper
 ```
 
 ### Install Dependencies
