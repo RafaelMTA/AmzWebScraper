@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import app from './src/app';
-import { AppConfig } from './src/config/AppConfig';
+import { AppConfig } from './src/configs/AppConfig';
 
 //Load enviroment variables
 dotenv.config();

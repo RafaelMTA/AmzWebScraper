@@ -2,7 +2,7 @@
 import type { Request, Response, NextFunction } from 'express';
 import { AppError } from '../utils/error/AppError';
 import type { ErrorResponse } from '../types/ErrorResponse';
-import { AppConfig } from '../config/AppConfig';
+import { AppConfig } from '../configs/AppConfig';
 
 export const errorHandler = (
   err: Error | AppError,

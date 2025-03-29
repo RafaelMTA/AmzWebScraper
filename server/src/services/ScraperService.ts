@@ -4,8 +4,8 @@ import type { AxiosResponse, AxiosInstance } from 'axios';
 import { JSDOM } from 'jsdom';
 import { ProductSchema } from '../schemas/ProductSchema';
 import { SearchQuerySchema } from '../schemas/SearchQuerySchema';
-import { AxiosErrorHandler } from '../handler/AxiosErrorHandler';
-import { AppConfig } from '../config/AppConfig';
+import { AxiosErrorHandler } from '../handlers/AxiosErrorHandler';
+import { AppConfig } from '../configs/AppConfig';
 import type { IScraperService } from '../interfaces/IScraperService';
 import { AppError } from '../utils/error/AppError';
 import { ServiceUnavailableError } from '../utils/error/ServiceUnavailableError';
@@ -97,7 +97,7 @@ export class ScraperService implements IScraperService{
             if(axios.isAxiosError(error)){
                 AxiosErrorHandler(error);
             }
-            
+
             throw new AppError(`Error on scraping: ${error instanceof(Error) ? error.message : 'Unknown Error'}`, 500);
         }
     }
