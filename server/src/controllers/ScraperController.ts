@@ -4,7 +4,6 @@ import type { IScraperController } from '../interfaces/IScraperController';
 import type { IScraperService } from '../interfaces/IScraperService';
 
 //The Controller classes will handle all the application request and response
-//Creates an instance of the scraper service,
 //Retrieve the keyword from the request query and validate it
 //Execute the scraper service, and returns the correpondent result or an error in case of failure
 export class ScraperController implements IScraperController{

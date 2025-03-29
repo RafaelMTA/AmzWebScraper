@@ -7,6 +7,8 @@ import { SearchQuerySchema } from '../schemas/SearchQuerySchema';
 import { AxiosErrorHandler } from '../handler/AxiosErrorHandler';
 import { AppConfig } from '../config/AppConfig';
 import type { IScraperService } from '../interfaces/IScraperService';
+import { AppError } from '../utils/error/AppError';
+import { ServiceUnavailableError } from '../utils/error/ServiceUnavailableError';
 
 //Creates a type from the Product Schema
 type Product = z.infer<typeof ProductSchema>;
@@ -34,7 +36,7 @@ export class ScraperService implements IScraperService{
         );        
     }
     
-    execute = async(keyword: string) : Promise<Product[] | Error> => {
+    execute = async(keyword: string) : Promise<Product[]> => {
         try{
             // Validate input
             SearchQuerySchema.parse({ keyword });
@@ -43,7 +45,10 @@ export class ScraperService implements IScraperService{
             const encodedKeyword = encodeURIComponent(keyword);
             const query = `/s?k=${encodedKeyword}`;
             const response: AxiosResponse = await this.client.get(query);
-            
+            // Additional check for 503 in response 
+            if (response.status === 503) {
+                throw new ServiceUnavailableError('Service temporarily unavailable');
+            }
             // Parse HTML with JSDOM
             const dom = new JSDOM(response.data);
             const document = dom.window.document;
@@ -86,14 +91,14 @@ export class ScraperService implements IScraperService{
             return validatedProducts;
         }catch(error){
             if (error instanceof z.ZodError) {
-                return new Error(`Error on Schema validation: ${error.message}`);
+                throw new AppError(`Error on Schema validation: ${error.message}`, 400);
             }
 
             if(axios.isAxiosError(error)){
                 AxiosErrorHandler(error);
             }
-  
-            return new Error(`Error on scraping: ${error instanceof(Error) ? error.message : 'Unknown Error'}`);          
+            
+            throw new AppError(`Error on scraping: ${error instanceof(Error) ? error.message : 'Unknown Error'}`, 500);
         }
     }
 
