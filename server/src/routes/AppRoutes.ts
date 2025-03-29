@@ -1,13 +1,15 @@
 import express from "express";
 import { ScraperController } from "../controllers/ScraperController";
+import { ScraperService } from "../services/ScraperService";
+import type { IScraperController } from "../interfaces/IScraperController";
 
+//Register all app routes
 class AppRoutes {
-    private readonly router: express.Router;   
-    private readonly scraperController: ScraperController;
+    private readonly router: express.Router;
 
-    constructor(){
+    //Dependency Injection - scraper controller
+    constructor(private readonly scraperController: IScraperController){
         this.router = express.Router();
-        this.scraperController = new ScraperController();
     }
 
     //Define app routes
@@ -17,4 +19,4 @@ class AppRoutes {
     }
 }
 
-export default new AppRoutes().initializeRoutes();
+export default new AppRoutes(new ScraperController(new ScraperService())).initializeRoutes();

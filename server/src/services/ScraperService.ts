@@ -6,6 +6,7 @@ import { ProductSchema } from '../schemas/ProductSchema';
 import { SearchQuerySchema } from '../schemas/SearchQuerySchema';
 import { AxiosErrorHandler } from '../handler/AxiosErrorHandler';
 import { AppConfig } from '../config/AppConfig';
+import type { IScraperService } from '../interfaces/IScraperService';
 
 //Creates a type from the Product Schema
 type Product = z.infer<typeof ProductSchema>;
@@ -15,7 +16,7 @@ type Product = z.infer<typeof ProductSchema>;
 //Receives the search keyword and makes a call to the website to be scraped
 //Retrieve the HTML using JSDOM and extract the data from the corresponding HTML elements
 //Validates each entry, accordinly to the Product Schema
-export class ScraperService{ 
+export class ScraperService implements IScraperService{ 
     private client: AxiosInstance;
     private readonly appConfig = AppConfig.getInstance();
     
@@ -32,7 +33,7 @@ export class ScraperService{
             }
         );        
     }
-
+    
     execute = async(keyword: string) : Promise<Product[] | Error> => {
         try{
             // Validate input
