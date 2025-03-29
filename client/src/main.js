@@ -25,7 +25,7 @@ async function scrapeData(query){
     
     try{
         //Needs to encode the query before sending to the server
-        const response = await fetch(`/api/scrape?keyword=${encodeURIComponent(query)}`, {
+        const response = await fetch(`/api/scraper?keyword=${encodeURIComponent(query)}`, {
             method: 'GET',
             headers: {
               'Content-Type': 'application/json; charset=utf-8',
@@ -34,7 +34,11 @@ async function scrapeData(query){
 
         if (!response.ok) {
             //Inform the user if the request failed(Ie. Amazon blocking the request)
-            showStatus('Error on Search, please try again...', 'error');
+            if(response.status === 503){ 
+                showStatus('Error on Search, please try again in a few minutes...', 'error');
+            }else{
+                showStatus('Error on Search', 'error');
+            }           
             throw new Error(`HTTP error! status: ${response.status}`);
         }
         //Fetched Products
@@ -48,7 +52,6 @@ async function scrapeData(query){
         }
         else 
         {
-            //showStatus('Data fetched successfully', 'success'); 
             data.map(item => {
                 renderProductItems(item); 
             });         
