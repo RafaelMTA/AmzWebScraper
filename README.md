@@ -95,12 +95,15 @@ bun vite
 │
 ├── server/                 # Express backend
 │   ├── src/
-│   │   ├── config/
+│   │   ├── configs/
 │   │   ├── controllers/
-│   │   ├── handler/
+│   │   ├── handlers/
+│   │   ├── interfaces/
+│   │   ├── middlewares/
 │   │   ├── routes/
 │   │   ├── schemas/
 │   │   ├── services/
+│   │   ├── types/
 │   │   └── utils/
 │   └── bun.lockb           # Bun lockfile
 └── README.md
